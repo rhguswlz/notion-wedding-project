@@ -12,12 +12,12 @@ import { PostCard } from '@/components/common/post-card'
 import { CategoryFilter } from '@/components/common/category-filter'
 import { SearchInput } from '@/components/common/search-input'
 import { EmptyState } from '@/components/common/empty-state'
-import { getPosts, CACHE_REVALIDATE } from '@/lib/notion/queries'
+import { getPosts } from '@/lib/notion/queries'
 import { formatCurrency } from '@/lib/utils'
 import type { PostSummary } from '@/types/post'
 
-// 홈 페이지는 통계 정보가 자주 변경되지 않으므로 24시간 캐싱
-export const revalidate = CACHE_REVALIDATE.home
+// 홈 페이지는 통계 정보가 자주 변경되지 않으므로 24시간 캐싱 (86400초)
+export const revalidate = 86400
 
 export const metadata: Metadata = {
   title: '웨딩 비용 정리 블로그',

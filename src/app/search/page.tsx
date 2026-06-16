@@ -10,11 +10,11 @@ import { Container } from '@/components/layout/container'
 import { PostCard } from '@/components/common/post-card'
 import { SearchInput } from '@/components/common/search-input'
 import { EmptyState } from '@/components/common/empty-state'
-import { searchPosts, CACHE_REVALIDATE } from '@/lib/notion/queries'
+import { searchPosts } from '@/lib/notion/queries'
 import type { PostSummary } from '@/types/post'
 
-// 검색 페이지는 사용자 입력이 자주 변하므로 1분 캐싱
-export const revalidate = CACHE_REVALIDATE.search
+// 검색 페이지는 사용자 입력이 자주 변하므로 1분 캐싱 (60초)
+export const revalidate = 60
 
 interface SearchPageProps {
   searchParams: Promise<{

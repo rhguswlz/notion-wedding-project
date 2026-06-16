@@ -17,8 +17,6 @@ import {
   getPostById,
   getItemsByCategoryId,
   getPageBlocks,
-  getPosts,
-  CACHE_REVALIDATE,
 } from '@/lib/notion/queries'
 import {
   formatCurrency,
@@ -28,37 +26,13 @@ import {
   cn,
 } from '@/lib/utils'
 
-/**
- * 동적 라우트 세그먼트 설정
- * - revalidate: ISR 캐싱 시간 (초)
- * - dynamicParams: false일 경우 generateStaticParams에 없는 경로는 404 반환
- *
- * generateStaticParams를 사용하면 빌드 시 모든 포스트 경로를 정적 생성합니다.
- */
-export const revalidate = CACHE_REVALIDATE.post
-export const dynamicParams = true // 새로운 포스트가 추가되면 동적 생성
+// ISR 캐싱 시간: 1시간
+export const revalidate = 3600
 
 interface PostPageProps {
   params: Promise<{
     id: string
   }>
-}
-
-/**
- * 모든 포스트 경로를 빌드 시점에 정적 생성합니다.
- * 이를 통해 동적 라우트의 성능을 최적화합니다.
- */
-export async function generateStaticParams() {
-  try {
-    const posts = await getPosts()
-    return posts.map(post => ({
-      id: post.id,
-    }))
-  } catch (error) {
-    console.error('Failed to generate static params for posts:', error)
-    // 오류 시 빈 배열 반환 (dynamicParams=true이므로 동적 생성으로 폴백)
-    return []
-  }
 }
 
 export async function generateMetadata({
