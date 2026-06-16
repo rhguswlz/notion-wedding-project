@@ -5,10 +5,8 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { Separator } from '@/components/ui/separator'
 
-const navItems = [
-  { title: '홈', href: '/' },
-  { title: '로그인', href: '/login' },
-]
+// 카테고리 항목은 Notion API 연동 후 동적으로 구성 예정
+const navItems = [{ title: '홈', href: '/' }]
 
 interface MobileNavProps {
   onClose: () => void

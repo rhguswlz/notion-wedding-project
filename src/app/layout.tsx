@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'NextJS Starter - 모던 웹 스타터킷',
+  title: '웨딩 비용 정리 블로그',
   description:
-    'Next.js 15, TypeScript, TailwindCSS, ShadcnUI로 구축된 프로덕션 준비가 완료된 웹 애플리케이션 스타터킷',
+    'Notion CMS 기반 웨딩 비용 카테고리별 정리 블로그. 예식장, 스드메, 예물, 하객 선물, 신혼살림, 허니문 비용을 공유합니다.',
 }
 
 export default function RootLayout({
