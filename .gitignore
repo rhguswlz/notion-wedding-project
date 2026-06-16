@@ -42,3 +42,10 @@ next-env.d.ts
 
 # MCP
 srhimp_data/
+.playwright-mcp/
+
+# Screenshots and test outputs
+*.png
+*.jpg
+*.jpeg
+*-snapshot.md
