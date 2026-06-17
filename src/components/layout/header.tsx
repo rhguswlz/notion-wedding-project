@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useMediaQuery } from 'usehooks-ts'
-import { Menu } from 'lucide-react'
+import { Menu, Settings } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -12,6 +13,7 @@ import { Container } from './container'
 import { ThemeToggle } from '@/components/theme-toggle'
 
 export function Header() {
+  const router = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const isMobile = useMediaQuery('(max-width: 768px)')
 
@@ -30,7 +32,16 @@ export function Header() {
           </div>
 
           {/* 우측 영역 */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => router.push('/admin/login')}
+              title="관리자 페이지"
+            >
+              <Settings className="h-5 w-5" />
+              <span className="sr-only">관리자</span>
+            </Button>
             <ThemeToggle />
 
             {/* 모바일 메뉴 버튼 */}
